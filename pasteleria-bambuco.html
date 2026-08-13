@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pastelería Bambuco — Cheesecakes y tortas en Ibagué</title>
+<meta name="description" content="Pastelería Bambuco: cheesecakes y tortas artesanales hechas en Ibagué, Tolima. Sabores tropicales, ingredientes locales y entregas a domicilio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --vino: #35101F;
+    --vino-deep: #220A15;
+    --vino-soft: #4A1729;
+    --crema: #FBF3E7;
+    --crema-dim: #F0E3D2;
+    --dorado: #D9A441;
+    --dorado-soft: #E9C77E;
+    --frambuesa: #E8748A;
+    --verde: #4A6B4D;
+    --texto-oscuro: #2A0F16;
+    --texto-claro: #FBF3E7;
+    --sombra: 0 20px 50px rgba(34, 10, 21, 0.35);
+    --radio: 22px;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    font-family: 'Manrope', sans-serif;
+    background: var(--crema);
+    color: var(--texto-oscuro);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,h2,h3, .display{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+  img,svg{ display:block; max-width:100%; }
+  ul{ list-style:none; }
+  button{ font-family:inherit; cursor:pointer; border:none; background:none; }
+
+  .container{
+    width: min(1180px, 92%);
+    margin-inline: auto;
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Manrope', sans-serif;
+    font-weight:700;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--dorado);
+  }
+  .eyebrow::before{
+    content:"";
+    width: 26px;
+    height: 2px;
+    background: var(--dorado);
+    display:inline-block;
+  }
+
+  /* ---------- Focus visibility ---------- */
+  a:focus-visible, button:focus-visible{
+    outline: 3px solid var(--dorado);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position: sticky;
+    top:0;
+    z-index: 100;
+    background: rgba(53, 16, 31, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(217,164,65,0.18);
+  }
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    padding: 16px 0;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color: var(--crema);
+  }
+  .logo-mark{ width:38px; height:38px; flex-shrink:0; }
+  .logo-text{
+    font-family:'Fraunces', serif;
+    font-size: 1.28rem;
+    font-weight: 700;
+    color: var(--crema);
+  }
+  .logo-text span{
+    display:block;
+    font-family:'Manrope', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dorado-soft);
+    margin-top: 1px;
+  }
+
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap: 34px;
+  }
+  .nav-links a{
+    color: var(--crema-dim);
+    font-size: 0.92rem;
+    font-weight: 600;
+    position:relative;
+    padding: 4px 0;
+    transition: color .25s ease;
+  }
+  .nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:-2px;
+    width:0%;
+    height:2px;
+    background: var(--dorado);
+    transition: width .3s ease;
+  }
+  .nav-links a:hover{ color: var(--crema); }
+  .nav-links a:hover::after{ width:100%; }
+
+  .nav-cta{
+    background: var(--dorado);
+    color: var(--vino-deep) !important;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-weight: 700 !important;
+    font-size: 0.86rem !important;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .nav-cta::after{ display:none; }
+  .nav-cta:hover{ transform: translateY(-2px); box-shadow: 0 10px 24px rgba(217,164,65,0.35); }
+
+  .burger{
+    display:none;
+    width: 30px; height: 22px;
+    position:relative;
+  }
+  .burger span{
+    position:absolute; left:0; right:0; height:2px;
+    background: var(--crema);
+    transition: transform .3s ease, opacity .3s ease, top .3s ease;
+  }
+  .burger span:nth-child(1){ top:0; }
+  .burger span:nth-child(2){ top:10px; }
+  .burger span:nth-child(3){ top:20px; }
+  .burger.open span:nth-child(1){ top:10px; transform: rotate(45deg); }
+  .burger.open span:nth-child(2){ opacity:0; }
+  .burger.open span:nth-child(3){ top:10px; transform: rotate(-45deg); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position: relative;
+    background: radial-gradient(120% 100% at 85% 0%, var(--vino-soft) 0%, var(--vino) 42%, var(--vino-deep) 100%);
+    color: var(--crema);
+    padding: 90px 0 120px;
+    overflow: hidden;
+  }
+  .hero .container{
+    display:grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 40px;
+    align-items:center;
+  }
+  .hero-dots{
+    position:absolute;
+    inset:0;
+    background-image: radial-gradient(rgba(217,164,65,0.35) 1.4px, transparent 1.4px);
+    background-size: 26px 26px;
+    -webkit-mask-image: radial-gradient(circle at 80% 20%, black, transparent 60%);
+    mask-image: radial-gradient(circle at 80% 20%, black, transparent 60%);
+    opacity: 0.5;
+    pointer-events:none;
+  }
+  .hero-text h1{
+    font-size: clamp(2.4rem, 4.6vw, 3.6rem);
+    color: var(--crema);
+    margin: 16px 0 20px;
+  }
+  .hero-text h1 em{
+    font-style: italic;
+    color: var(--dorado-soft);
+  }
+  .hero-text p{
+    font-size: 1.06rem;
+    line-height: 1.65;
+    color: var(--crema-dim);
+    max-width: 480px;
+    margin-bottom: 32px;
+  }
+  .hero-actions{ display:flex; gap:16px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding: 15px 26px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.94rem;
+    transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .btn-primary{
+    background: var(--dorado);
+    color: var(--vino-deep);
+  }
+  .btn-primary:hover{ transform: translateY(-3px); box-shadow: 0 14px 30px rgba(217,164,65,0.35); }
+  .btn-ghost{
+    border: 1.5px solid rgba(251,243,231,0.35);
+    color: var(--crema);
+  }
+  .btn-ghost:hover{ background: rgba(251,243,231,0.08); border-color: rgba(251,243,231,0.6); }
+
+  .hero-stats{
+    display:flex;
+    gap: 30px;
+    margin-top: 46px;
+    flex-wrap: wrap;
+  }
+  .hero-stats div{ min-width: 110px; }
+  .hero-stats strong{
+    font-family:'Fraunces', serif;
+    font-size: 1.7rem;
+    color: var(--dorado-soft);
+    display:block;
+  }
+  .hero-stats span{
+    font-size: 0.78rem;
+    color: var(--crema-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .hero-art{ position:relative; }
+  .hero-slice{
+    width: 100%;
+    max-width: 460px;
+    margin-inline: auto;
+    filter: drop-shadow(0 30px 40px rgba(0,0,0,0.35));
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes float{
+    0%,100%{ transform: translateY(0px) rotate(-2deg); }
+    50%{ transform: translateY(-14px) rotate(1deg); }
+  }
+
+  /* ---------- ribbon divider (referencia al bambuco / reinado) ---------- */
+  .cinta{
+    height: 34px;
+    display:flex;
+    width: 100%;
+  }
+  .cinta span{ flex:1; }
+  .cinta span:nth-child(1){ background: var(--vino); }
+  .cinta span:nth-child(2){ background: var(--dorado); }
+  .cinta span:nth-child(3){ background: var(--verde); }
+  .cinta span:nth-child(4){ background: var(--frambuesa); }
+  .cinta span:nth-child(5){ background: var(--vino-deep); }
+
+  /* ---------- SECTION GENERICS ---------- */
+  section{ padding: 100px 0; }
+  .section-head{
+    max-width: 620px;
+    margin-bottom: 56px;
+  }
+  .section-head h2{
+    font-size: clamp(2rem, 3.4vw, 2.7rem);
+    margin-top: 14px;
+    color: var(--vino-deep);
+  }
+  .section-head p{
+    margin-top: 16px;
+    font-size: 1.02rem;
+    line-height: 1.65;
+    color: #5c4a44;
+  }
+  .section-head.light h2{ color: var(--crema); }
+  .section-head.light p{ color: var(--crema-dim); }
+  .section-head.center{ margin-inline:auto; text-align:center; }
+
+  .reveal{
+    opacity:0;
+    transform: translateY(28px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{ opacity:1; transform: translateY(0); }
+
+  /* ---------- ABOUT ---------- */
+  .about{ background: var(--crema); }
+  .about .container{
+    display:grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 60px;
+    align-items:center;
+  }
+  .about-art{
+    background: var(--dorado-soft);
+    border-radius: var(--radio);
+    padding: 40px;
+    position: relative;
+  }
+  .about-art svg{ width:100%; height:auto; }
+  .about-copy p{
+    font-size: 1.03rem;
+    line-height: 1.75;
+    color: #5c4a44;
+    margin-bottom: 18px;
+  }
+  .about-copy p strong{ color: var(--vino); }
+  .about-tags{
+    display:flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 26px;
+  }
+  .about-tags span{
+    background: var(--crema-dim);
+    border: 1px solid rgba(53,16,31,0.12);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--vino);
+  }
+
+  /* ---------- MENU ---------- */
+  .menu{ background: var(--crema-dim); }
+  .menu-tabs{
+    display:flex;
+    gap: 10px;
+    margin-bottom: 46px;
+    flex-wrap: wrap;
+  }
+  .menu-tab{
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.88rem;
+    background: transparent;
+    border: 1.5px solid rgba(53,16,31,0.2);
+    color: var(--vino);
+    transition: background .25s ease, color .25s ease;
+  }
+  .menu-tab.active, .menu-tab:hover{
+    background: var(--vino);
+    color: var(--crema);
+    border-color: var(--vino);
+  }
+
+  .menu-group{ display:none; }
+  .menu-group.active{ display:block; }
+
+  .card-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
+  .food-card{
+    background: var(--crema);
+    border-radius: var(--radio);
+    padding: 28px;
+    box-shadow: 0 10px 30px rgba(53,16,31,0.06);
+    transition: transform .3s ease, box-shadow .3s ease;
+    border: 1px solid rgba(53,16,31,0.06);
+  }
+  .food-card:hover{
+    transform: translateY(-8px);
+    box-shadow: var(--sombra);
+  }
+  .food-icon{
+    width: 62px; height:62px;
+    margin-bottom: 18px;
+  }
+  .food-card h3{
+    font-size: 1.24rem;
+    color: var(--vino-deep);
+    margin-bottom: 8px;
+  }
+  .food-card p{
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: #6b5951;
+    margin-bottom: 20px;
+    min-height: 62px;
+  }
+  .food-meta{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    border-top: 1px dashed rgba(53,16,31,0.18);
+    padding-top: 16px;
+  }
+  .price{
+    font-family:'Fraunces', serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--frambuesa);
+  }
+  .price span{
+    display:block;
+    font-family:'Manrope', sans-serif;
+    font-weight: 600;
+    font-size: 0.68rem;
+    color: #8a7770;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+  .order-link{
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--vino);
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .order-link svg{ width:14px; height:14px; transition: transform .25s ease; }
+  .order-link:hover svg{ transform: translateX(4px); }
+
+  /* ---------- PROCESS ---------- */
+  .process{ background: var(--vino); color: var(--crema); position:relative; overflow:hidden; }
+  .process-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 20px;
+    position:relative;
+  }
+  .process-grid::before{
+    content:"";
+    position:absolute;
+    top: 30px;
+    left: 12%;
+    right: 12%;
+    height: 1px;
+    background: repeating-linear-gradient(to right, rgba(217,164,65,0.5) 0 10px, transparent 10px 20px);
+  }
+  .process-step{ position:relative; }
+  .step-num{
+    width: 60px; height:60px;
+    border-radius: 50%;
+    background: var(--dorado);
+    color: var(--vino-deep);
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size: 1.4rem;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom: 22px;
+    position:relative; z-index:2;
+  }
+  .process-step h3{ font-size: 1.2rem; margin-bottom: 10px; color: var(--crema); }
+  .process-step p{ font-size: 0.92rem; line-height: 1.6; color: var(--crema-dim); }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testi{ background: var(--crema); }
+  .testi-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
+  .testi-card{
+    background: var(--crema-dim);
+    border-radius: var(--radio);
+    padding: 30px;
+    position:relative;
+  }
+  .testi-quote{
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--vino-deep);
+    margin-bottom: 22px;
+  }
+  .testi-person{ display:flex; align-items:center; gap:12px; }
+  .testi-avatar{
+    width: 42px; height:42px;
+    border-radius: 50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    color: var(--crema);
+    flex-shrink:0;
+  }
+  .testi-person strong{ display:block; font-size: 0.9rem; color: var(--vino-deep); }
+  .testi-person span{ font-size: 0.78rem; color: #8a7770; }
+
+  /* ---------- CONTACT ---------- */
+  .contact{ background: var(--vino-deep); color: var(--crema); }
+  .contact .container{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .contact-list{ margin-top: 30px; display:flex; flex-direction:column; gap: 22px; }
+  .contact-item{ display:flex; gap: 16px; align-items:flex-start; }
+  .contact-item .ic{
+    width: 42px; height:42px; border-radius: 12px;
+    background: rgba(217,164,65,0.15);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .contact-item h4{ font-size: 0.98rem; margin-bottom: 4px; color: var(--dorado-soft); }
+  .contact-item p{ font-size: 0.9rem; color: var(--crema-dim); line-height: 1.55; }
+  .map-card{
+    border-radius: var(--radio);
+    overflow:hidden;
+    background: var(--vino-soft);
+    padding: 30px;
+    height: 100%;
+  }
+  .map-card svg{ width:100%; height:auto; }
+  .social-row{ display:flex; gap:14px; margin-top: 30px; }
+  .social-row a{
+    width: 44px; height:44px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(251,243,231,0.3);
+    display:flex; align-items:center; justify-content:center;
+    transition: background .25s ease, border-color .25s ease;
+  }
+  .social-row a:hover{ background: var(--dorado); border-color: var(--dorado); }
+
+  /* ---------- FOOTER ---------- */
+  footer{ background: var(--vino-deep); border-top: 1px solid rgba(217,164,65,0.15); padding: 34px 0; }
+  footer .container{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  footer p{ font-size: 0.8rem; color: rgba(251,243,231,0.55); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 980px){
+    .hero .container, .about .container, .contact .container{
+      grid-template-columns: 1fr;
+    }
+    .hero-art{ order:-1; max-width: 340px; margin-inline:auto; }
+    .card-grid, .process-grid, .testi-grid{ grid-template-columns: repeat(2,1fr); }
+    .process-grid::before{ display:none; }
+  }
+
+  @media (max-width: 720px){
+    .nav-links{
+      position: fixed;
+      top: 68px; left:0; right:0;
+      background: var(--vino-deep);
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 24px 6%;
+      gap: 20px;
+      transform: translateY(-130%);
+      transition: transform .35s ease;
+      border-bottom: 1px solid rgba(217,164,65,0.2);
+    }
+    .nav-links.open{ transform: translateY(0); }
+    .burger{ display:block; }
+    section{ padding: 70px 0; }
+    .card-grid, .process-grid, .testi-grid{ grid-template-columns: 1fr; }
+    .hero{ padding: 60px 0 80px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="container">
+    <a href="#inicio" class="logo">
+      <svg class="logo-mark" viewBox="0 0 48 48" fill="none">
+        <circle cx="24" cy="24" r="23" stroke="#D9A441" stroke-width="1.5"/>
+        <path d="M13 27c0-6 5-10 11-10s11 4 11 10" stroke="#D9A441" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M13 27h22v3a4 4 0 0 1-4 4H17a4 4 0 0 1-4-4v-3Z" fill="#E8748A"/>
+        <circle cx="24" cy="15" r="2.4" fill="#E8748A"/>
+      </svg>
+      <span class="logo-text">Bambuco<span>Pastelería · Ibagué</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#cheesecakes">Cheesecakes</a></li>
+      <li><a href="#tortas">Tortas</a></li>
+      <li><a href="#pedidos">Cómo pedir</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="https://wa.me/573001234567?text=Hola%2C%20quiero%20hacer%20un%20pedido" class="nav-cta">
+        Pedir por WhatsApp
+      </a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero-dots"></div>
+    <div class="container">
+      <div class="hero-text">
+        <span class="eyebrow">Hecho a mano en Ibagué, Tolima</span>
+        <h1>Cada torta suena a <em>fiesta</em>, cada cheesecake sabe a <em>Tolima</em>.</h1>
+        <p>En Bambuco horneamos cheesecakes y tortas artesanales con frutas de la región —maracuyá, mora y guanábana recién compradas en la plaza— para las mesas de Ibagué desde 2016.</p>
+        <div class="hero-actions">
+          <a href="#cheesecakes" class="btn btn-primary">Ver el menú</a>
+          <a href="https://wa.me/573001234567?text=Hola%2C%20quiero%20hacer%20un%20pedido" class="btn btn-ghost">Pedir por WhatsApp</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>+3.200</strong><span>Tortas entregadas</span></div>
+          <div><strong>9</strong><span>Sabores de cheesecake</span></div>
+          <div><strong>48h</strong><span>Tiempo de encargo</span></div>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <svg class="hero-slice" viewBox="0 0 420 420" fill="none">
+          <ellipse cx="210" cy="350" rx="150" ry="18" fill="#000" opacity="0.15"/>
+          <!-- plato -->
+          <ellipse cx="210" cy="330" rx="170" ry="26" fill="#FBF3E7"/>
+          <!-- base galleta -->
+          <path d="M120 320 L210 100 L300 320 Z" fill="#8A5A34"/>
+          <path d="M120 320 L210 100 L300 320" stroke="#6E4527" stroke-width="4" stroke-linejoin="round"/>
+          <!-- relleno -->
+          <path d="M132 308 L210 130 L288 308 Z" fill="#FBF0DE"/>
+          <!-- capa superior maracuya -->
+          <path d="M140 240 Q210 210 280 240 L288 308 L132 308 Z" fill="#F2B341"/>
+          <!-- goteo frambuesa -->
+          <path d="M150 216 Q160 260 148 300" stroke="#E8748A" stroke-width="10" stroke-linecap="round" fill="none"/>
+          <path d="M210 200 Q220 250 205 305" stroke="#E8748A" stroke-width="10" stroke-linecap="round" fill="none"/>
+          <path d="M262 220 Q270 260 258 300" stroke="#E8748A" stroke-width="10" stroke-linecap="round" fill="none"/>
+          <!-- fruta -->
+          <circle cx="210" cy="150" r="16" fill="#E8748A"/>
+          <path d="M203 138 q7-14 14 0" stroke="#4A6B4D" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <circle cx="165" cy="180" r="9" fill="#D9A441"/>
+          <circle cx="255" cy="185" r="9" fill="#D9A441"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="cinta"><span></span><span></span><span></span><span></span><span></span></div>
+
+  <!-- ABOUT -->
+  <section class="about" id="nosotros">
+    <div class="container">
+      <div class="about-art reveal">
+        <svg viewBox="0 0 300 300" fill="none">
+          <circle cx="150" cy="150" r="130" fill="#FBF3E7" opacity="0.5"/>
+          <rect x="70" y="190" width="160" height="16" rx="8" fill="#35101F"/>
+          <rect x="90" y="150" width="120" height="46" rx="6" fill="#E8748A"/>
+          <rect x="90" y="110" width="120" height="46" rx="6" fill="#FBF3E7"/>
+          <rect x="90" y="70" width="120" height="46" rx="6" fill="#4A6B4D"/>
+          <circle cx="150" cy="60" r="10" fill="#D9A441"/>
+          <rect x="147" y="30" width="6" height="26" rx="3" fill="#D9A441"/>
+        </svg>
+      </div>
+      <div class="about-copy reveal">
+        <span class="eyebrow">Nuestra historia</span>
+        <h2>Una cocina pequeña, un barrio grande.</h2>
+        <p>Bambuco nació en una cocina del barrio Belén, muy cerca del Conservatorio, cuando <strong>doña Marisol</strong> empezó a vender cheesecakes a los vecinos que salían de ensayo. Diez años después seguimos siendo un taller pequeño, pero ya horneamos para toda la ciudad: cumpleaños, matrimonios, quinceaños y reinados de barrio.</p>
+        <p>Compramos la fruta cada semana en la Plaza de la 21 y trabajamos con paneleras del Cañón del Combeima para el arequipe y la miel. Nada de mezclas industriales: cada torta se bate, se hornea y se decora a mano el mismo día que sale de nuestra cocina.</p>
+        <div class="about-tags">
+          <span>Fruta de plaza</span>
+          <span>Horneado diario</span>
+          <span>Sin conservantes</span>
+          <span>Recetas propias</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="menu" id="cheesecakes">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Nuestro menú</span>
+        <h2>Cheesecakes y tortas, listos para tu mesa</h2>
+        <p>Todas las tortas se preparan por encargo. Los precios corresponden a torta completa (10–12 porciones); también hacemos tamaños individuales para eventos.</p>
+      </div>
+
+      <div class="menu-tabs">
+        <button class="menu-tab active" data-target="grupo-cheesecakes">Cheesecakes</button>
+        <button class="menu-tab" data-target="grupo-tortas">Tortas</button>
+      </div>
+
+      <div class="menu-group active" id="grupo-cheesecakes">
+        <div class="card-grid">
+
+          <article class="food-card reveal">
+            <svg class="food-icon" viewBox="0 0 64 64"><path d="M10 50 L32 10 L54 50 Z" fill="#8A5A34"/><path d="M14 46 L32 16 L50 46 Z" fill="#FBF0DE"/><path d="M18 34 Q32 24 46 34 L50 46 L14 46 Z" fill="#F2B341"/></svg>
+            <h3>Clásico de la casa</h3>
+            <p>Receta original al horno, base de galleta y un toque de vainilla de Chaparral.</p>
+            <div class="food-meta">
+              <div class="price">$68.000 <span>torta completa</span></div>
+              <a class="order-link" href="https://wa.me/573001234567?text=Hola%2C%20quiero%20un%20Cheesecake%20Cl%C3%A1sico%20de%20la%20casa" aria-label="Pedir Cheesecake Clásico por WhatsApp">Pedir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            </div>
+          </article>
+
+          <article class="food-card reveal">
+            <svg class="food-icon" viewBox="0 0 64 64"><path d="M10 50 L32 10 L54 50 Z" fill="#8A5A34"/><path d="M14 46 L32 16 L50 46 Z" fill="#FBF0DE"/><path d="M18 34 Q32 24 46 34 L50 46 L14 46 Z" fill="#F2B341"/><circle cx="32" cy="20" r="4" fill="#D9A441"/></svg>
+            <h3>Maracuyá tolimense</h3>
+            <p>Cubierta de maracuyá fresco de la plaza, dulce con un punto ácido muy Tolima.</p>
+            <div class="food-meta">
+              <div class="price">$72.000 <span>torta completa</span></div>
+              <a class="order-link" href="https://wa.me/573001234567?text=Hola%2C%20quiero%20un%20Cheesecake%20de%20Maracuy%C3%A1" aria-label="Pedir Cheesecake de Maracuyá por WhatsApp">Pedir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            </div>
+          </article>
+
+          <article class="food-card reveal">
+            <svg class="food-icon" viewBox="0 0 64 64"><path d="M10 50 L32 10 L54 50 Z" fill="#8A5A34"/><path d="M14 46 L32 16 L50 46 Z" fill="#FBF0DE"/><path d="M18 34 Q32 24 46 34 L50 46 L14 46 Z" fill="#7A4FA0"/></svg>
+            <h3>Mora silvestre</h3>
+            <p>Salsa de mora reducida en casa, con capas de mermelada y merengue tostado.</p>
+            <div class="food-meta">
+              <div class="price">$70.000 <span>torta completa</span></div>
+              <a class="order-link" href="https://wa.me/573001234567?text=Hola%2C%20quiero%20un%20Cheesecake%20de%20Mora" aria-label="Pedir Cheesecake de Mora por WhatsApp">Pedir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            </div>
+          </article>
+
+          <article class="food-card reveal">
+            <svg class="food-icon" viewBox="0 0 64 64"><path d="M10 50 L32 10 L54 50 Z" fill="#8A5A34"/><path d="M14 46 L32 16 L50 46 Z" fill="#FBF0DE"/><path d="M18 34 Q32 24 46 34 L50 46 L14 46 Z" fill="#EDEBE4"/></svg>
+            <h3>Guanábana y chocolate blanco</h3>
+            <p>Pulpa de guanábana batida con chocolate blanco, suave y muy cremoso.</p>
+            <div class="food-meta">
+              <div class="price">$74.000 <span>torta completa</span></div>
+              <a class="order-link" href="https://wa.me/573001234567?text=Hola%2C%20quiero%20un%20Cheesecake%20de%20Guan%C3%A1bana" aria-label="Pedir Cheesecake de Guanábana por WhatsApp">Pedir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            </div>
+          </article>
+
+          <article class="food-card reveal">
+            <svg class="food-icon" viewBox="0 0 64 64"><path d="M10 50 L32 10 L54 50 Z" fill="#8A5A34"/><path d="M14 46 L32 16 L50 46 Z" fill="#FBF0DE"/><path d="M18 34 Q32 24 46 34 L50 46 L14 46 Z" fill="#6E4527"/></svg>
+            <h3>Café del Líbano</h3>
+            <p>Con café tostado de fincas del Líbano, Tolima, y crocante de nuez caramelizada.</p>
+            <div class="food-meta">
+              <div class="price">$75.000 <span>torta completa</span></div>
+              <a class="order-link" href="https://wa.me/573001234567?text=Hola%2C%20quiero%20un%20Cheesecake%20de%20Caf%C3%A9%20del%20L%C3%ADbano" aria-label="Pedir Cheesecake de Café por WhatsApp">Pedir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            </div>
+          </article>
+
+          <article class="food-card reveal">
+            <svg class="food-icon" viewBox="0 0 64 64"><path d="M10 50 L32 10 L54 50 Z" fill="#8A5A34"/><path d="M14 46 L32 16 L50 46 Z" fill="#FBF0DE"/><path d="M18 34 Q32 24 46 34 L50 46 L14 46 Z" fill="#C98A3D"/></svg>
+            <h3>Arequipe y nuez</h3>
+            <p>Corazón de arequipe artesanal del Combeima, con nueces tostadas por encima.</p>
+            <div class="food-meta">
+              <div class="price">$73.000 <span>torta completa</span></div>
+              <a class="order-link" href="https://wa.me/573001234567?text=Hola%2C%20quiero%20un%20Cheesecake%20de%20Arequipe" aria-label="Pedir Cheesecake de Arequipe por WhatsApp">Pedir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <div class="menu-group" id="grupo-tortas">
+        <div class="card-grid">
+
+          <article class="food-card reveal">
+            <svg class="food-icon" viewBox="0 0 64 64"><rect x="10" y="34" width="44" height="18" rx="4" fill="#E8748A"/><rect x="10" y="18" width="44" height="18" rx="4" fill="#FBF3E7"/><circle cx="32" cy="12" r="5" fill="#D9A441"/><rect x="30" y="2" width="4" height="10" rx="2" fill="#D9A441"/></svg>
+            <h3>Tres leches</h3>
+            <p>Bizcocho bañado en tres leches, con merengue suave y canela al gusto.</p>
+            <div class="food-meta">
+              <div class="price">$62.000 <span>torta completa</span></div>
+              <a class="order-link" href="https://wa.me/573001234567?text=Hola%2C%20quiero%20una%20Torta%20Tres%20Leches" aria-label="Pedir Torta Tres Leches por WhatsApp">Pedir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            </div>
+          </article>
+
+          <article class="food-card reveal">
+            <svg class="food-icon" viewBox="0 0 64 64"><rect x="10" y="34" width="44" height="18" rx="4" fill="#6E4527"/><rect x="10" y="18" width="44" height="18" rx="4" fill="#4B2A16"/><circle cx="32" cy="12" r="5" fill="#E8748A"/><rect x="30" y="2" width="4" height="10" rx="2" fill="#D9A441"/></svg>
+            <h3>Chocolate con cerezas</h3>
+            <p>Bizcocho de cacao intenso, ganache de chocolate y cerezas en almíbar.</p>
+            <div class="food-meta">
+              <div class="price">$66.000 <span>torta completa</span></div>
+              <a class="order-link" href="https://wa.me/573001234567?text=Hola%2C%20quiero%20una%20Torta%20de%20Chocolate%20con%20Cerezas" aria-label="Pedir Torta de Chocolate por WhatsApp">Pedir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            </div>
+          </article>
+
+          <article class="food-card reveal">
+            <svg class="food-icon" viewBox="0 0 64 64"><rect x="10" y="34" width="44" height="18" rx="4" fill="#8E2E45"/><rect x="10" y="18" width="44" height="18" rx="4" fill="#B03B57"/><circle cx="32" cy="12" r="5" fill="#FBF3E7"/><rect x="30" y="2" width="4" height="10" rx="2" fill="#D9A441"/></svg>
+            <h3>Red velvet</h3>
+            <p>Bizcocho aterciopelado de cacao y betún de queso crema batido a mano.</p>
+            <div class="food-meta">
+              <div class="price">$68.000 <span>torta completa</span></div>
+              <a class="order-link" href="https://wa.me/573001234567?text=Hola%2C%20quiero%20una%20Torta%20Red%20Velvet" aria-label="Pedir Torta Red Velvet por WhatsApp">Pedir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            </div>
+          </article>
+
+          <article class="food-card reveal">
+            <svg class="food-icon" viewBox="0 0 64 64"><rect x="10" y="34" width="44" height="18" rx="4" fill="#D9A441"/><rect x="10" y="18" width="44" height="18" rx="4" fill="#F2B341"/><circle cx="32" cy="12" r="5" fill="#FBF3E7"/><rect x="30" y="2" width="4" height="10" rx="2" fill="#4A6B4D"/></svg>
+            <h3>Zanahoria y queso crema</h3>
+            <p>Bizcocho especiado con zanahoria, nuez y frosting de queso crema.</p>
+            <div class="food-meta">
+              <div class="price">$64.000 <span>torta completa</span></div>
+              <a class="order-link" href="https://wa.me/573001234567?text=Hola%2C%20quiero%20una%20Torta%20de%20Zanahoria" aria-label="Pedir Torta de Zanahoria por WhatsApp">Pedir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            </div>
+          </article>
+
+          <article class="food-card reveal">
+            <svg class="food-icon" viewBox="0 0 64 64"><rect x="10" y="34" width="44" height="18" rx="4" fill="#FBF3E7"/><rect x="10" y="18" width="44" height="18" rx="4" fill="#FBF0DE"/><circle cx="20" cy="26" r="3" fill="#E8748A"/><circle cx="32" cy="42" r="3" fill="#7A4FA0"/><circle cx="44" cy="26" r="3" fill="#D9A441"/></svg>
+            <h3>Naked de frutos rojos</h3>
+            <p>Capas visibles de bizcocho, crema chantillí y frutos rojos frescos de temporada.</p>
+            <div class="food-meta">
+              <div class="price">$78.000 <span>torta completa</span></div>
+              <a class="order-link" href="https://wa.me/573001234567?text=Hola%2C%20quiero%20una%20Torta%20Naked%20de%20Frutos%20Rojos" aria-label="Pedir Torta Naked por WhatsApp">Pedir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            </div>
+          </article>
+
+          <article class="food-card reveal">
+            <svg class="food-icon" viewBox="0 0 64 64"><rect x="10" y="34" width="44" height="18" rx="4" fill="#C98A3D"/><rect x="10" y="18" width="44" height="18" rx="4" fill="#E1A957"/><circle cx="32" cy="12" r="5" fill="#4A6B4D"/><rect x="30" y="2" width="4" height="10" rx="2" fill="#D9A441"/></svg>
+            <h3>Achira y miel</h3>
+            <p>Nuestro homenaje a la achira tolimense: bizcocho de almidón de achira bañado en miel.</p>
+            <div class="food-meta">
+              <div class="price">$70.000 <span>torta completa</span></div>
+              <a class="order-link" href="https://wa.me/573001234567?text=Hola%2C%20quiero%20una%20Torta%20de%20Achira%20y%20Miel" aria-label="Pedir Torta de Achira por WhatsApp">Pedir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section class="process" id="pedidos">
+    <div class="container">
+      <div class="section-head light reveal">
+        <span class="eyebrow">Cómo pedir</span>
+        <h2>De la cocina a tu mesa en tres pasos</h2>
+      </div>
+      <div class="process-grid">
+        <div class="process-step reveal">
+          <div class="step-num">1</div>
+          <h3>Elige tu torta</h3>
+          <p>Escoge el sabor, el tamaño y si es para evento o para la casa. Puedes combinar dos sabores en una misma torta.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num">2</div>
+          <h3>Escríbenos por WhatsApp</h3>
+          <p>Confirmamos fecha de entrega, decoración y forma de pago. Pedidos con mínimo 48 horas de anticipación.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num">3</div>
+          <h3>Recíbela fresca</h3>
+          <p>Recoge en el local del barrio Belén o pide domicilio dentro de Ibagué. Siempre sale del horno el mismo día.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section class="testi">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Lo que dicen</span>
+        <h2>Clientes que ya endulzaron su mesa</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card reveal">
+          <p class="testi-quote">"El cheesecake de maracuyá fue la estrella de la fiesta de mi mamá. Llegó impecable y supo aún mejor de lo que se veía."</p>
+          <div class="testi-person">
+            <div class="testi-avatar" style="background:#4A6B4D;">L</div>
+            <div><strong>Laura R.</strong><span>Barrio Piedra Pintada</span></div>
+          </div>
+        </div>
+        <div class="testi-card reveal">
+          <p class="testi-quote">"Pedimos la torta de achira para el reinado del barrio y todos preguntaron la receta. Un sabor que no se consigue en cualquier parte."</p>
+          <div class="testi-person">
+            <div class="testi-avatar" style="background:#D9A441;">J</div>
+            <div><strong>Jorge T.</strong><span>Comuna 8</span></div>
+          </div>
+        </div>
+        <div class="testi-card reveal">
+          <p class="testi-quote">"Encargué 40 porciones para un matrimonio y llegaron a tiempo, bien empacadas y con un sabor a café del Líbano espectacular."</p>
+          <div class="testi-person">
+            <div class="testi-avatar" style="background:#E8748A;">C</div>
+            <div><strong>Carolina M.</strong><span>Ambalá</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contact" id="contacto">
+    <div class="container">
+      <div class="reveal">
+        <span class="eyebrow">Visítanos</span>
+        <h2 style="color:var(--crema); margin-top:14px; font-size:clamp(2rem,3.4vw,2.6rem);">Te esperamos en el barrio Belén</h2>
+        <div class="contact-list">
+          <div class="contact-item">
+            <div class="ic">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9A441" stroke-width="2"><path d="M12 22s7-7.5 7-13a7 7 0 1 0-14 0c0 5.5 7 13 7 13Z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            </div>
+            <div><h4>Dirección</h4><p>Carrera 4 # 21-36, Barrio Belén, Ibagué, Tolima</p></div>
+          </div>
+          <div class="contact-item">
+            <div class="ic">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9A441" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            </div>
+            <div><h4>Horario</h4><p>Martes a sábado: 9:00 a.m. – 7:00 p.m.<br>Domingos: 9:00 a.m. – 1:00 p.m. · Lunes cerrado</p></div>
+          </div>
+          <div class="contact-item">
+            <div class="ic">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9A441" stroke-width="2"><path d="M3 5h4l2 5-2.5 1.5a11 11 0 0 0 5 5L13 14l5 2v4a2 2 0 0 1-2 2C8.5 22 2 15.5 2 7a2 2 0 0 1 2-2Z"/></svg>
+            </div>
+            <div><h4>WhatsApp y pedidos</h4><p>+57 300 123 4567 · Pedidos con 48 horas de anticipación</p></div>
+          </div>
+        </div>
+        <div class="social-row">
+          <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FBF3E7" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FBF3E7" stroke-width="1.8"><path d="M15 8h-2a2 2 0 0 0-2 2v10M9 13h4"/><circle cx="12" cy="12" r="9"/></svg></a>
+          <a href="https://wa.me/573001234567" aria-label="WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FBF3E7" stroke-width="1.8"><path d="M3 5h4l2 5-2.5 1.5a11 11 0 0 0 5 5L13 14l5 2v4a2 2 0 0 1-2 2C8.5 22 2 15.5 2 7a2 2 0 0 1 2-2Z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="map-card reveal">
+        <svg viewBox="0 0 320 260" fill="none">
+          <rect width="320" height="260" rx="18" fill="#3A1220"/>
+          <path d="M0 60 H320 M0 120 H320 M0 180 H320" stroke="#4A1729" stroke-width="6"/>
+          <path d="M60 0 V260 M160 0 V260 M240 0 V260" stroke="#4A1729" stroke-width="6"/>
+          <path d="M20 200 Q120 100 300 40" stroke="#D9A441" stroke-width="4" stroke-dasharray="2 10" stroke-linecap="round"/>
+          <circle cx="160" cy="120" r="14" fill="#E8748A"/>
+          <path d="M160 106 a14 14 0 1 1 -0.1 0" fill="#E8748A"/>
+          <circle cx="160" cy="118" r="5" fill="#3A1220"/>
+          <path d="M160 132 L160 150" stroke="#E8748A" stroke-width="4"/>
+        </svg>
+        <p style="font-size:0.82rem; color:var(--crema-dim); margin-top:14px;">Barrio Belén, a 5 minutos del Conservatorio del Tolima.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <span class="logo-text" style="color:var(--crema); font-size:1rem;">Bambuco Pastelería</span>
+    <p>© 2026 Bambuco Pastelería · Ibagué, Tolima, Colombia. Hecho con cariño y mucha panela.</p>
+  </div>
+</footer>
+
+<script>
+  // Menú móvil
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    burger.classList.toggle('open');
+    burger.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Tabs del menú
+  const tabs = document.querySelectorAll('.menu-tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelectorAll('.menu-group').forEach(g => g.classList.remove('active'));
+      document.getElementById(tab.dataset.target).classList.add('active');
+    });
+  });
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
